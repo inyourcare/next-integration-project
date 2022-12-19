@@ -1,3 +1,4 @@
+import HomeCard from '@components/cards/Home';
 import BaseLayout from '@components/layouts/base/layout';
 import { logger } from '@core/logger';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
@@ -11,7 +12,7 @@ export default function Home({ ogImage }: InferGetServerSidePropsType<typeof get
         <meta name="og:image" content={`${ogImage}`} />
       </Head>
       <BaseLayout>
-        
+        <HomeCard />
       </BaseLayout>
     </>
   )
