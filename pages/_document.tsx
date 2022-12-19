@@ -7,6 +7,7 @@ export default class MyDocument extends Document {
         return (
             <Html>
                 <Head>
+                    <meta name="og:image" content={`${process.env['HOST']}`} />
                     <meta property="og:title" content="" />
                     <meta property="og:url" content="" />
                     <meta property="og:type" content="website" />
