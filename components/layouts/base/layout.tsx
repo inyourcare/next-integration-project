@@ -10,7 +10,7 @@ export default function BaseLayout({ children }: BaseLayoutProps) {
     return (
         <>
             <Head>
-                <title>소셜벤처 360 가이드북</title>
+                <title></title>
             </Head>
             <Header />
                 {children}

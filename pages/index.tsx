@@ -21,7 +21,7 @@ export default function Home({ ogImage }: InferGetServerSidePropsType<typeof get
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req } = context;
   logger.debug('index:getServerSideProps', req?.headers.host)
-  const ogImage = `${req?.headers.host}/api/og`
+  const ogImage = `http://${req?.headers.host}/api/og`
   return {
     props: { ogImage }
   };
