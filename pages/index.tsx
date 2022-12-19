@@ -1,7 +1,6 @@
 import { logger } from '@core/logger';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
-import styles from '../styles/Home.module.css'
 
 export default function Home({ ogImage }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
