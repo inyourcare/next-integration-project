@@ -1,3 +1,4 @@
+import BaseLayout from '@components/layouts/base/layout';
 import { logger } from '@core/logger';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
@@ -9,7 +10,9 @@ export default function Home({ ogImage }: InferGetServerSidePropsType<typeof get
         {/* <meta name="og:image" content={`${router.basePath}`} /> */}
         <meta name="og:image" content={`${ogImage}`} />
       </Head>
-      Home
+      <BaseLayout>
+        
+      </BaseLayout>
     </>
   )
 }
