@@ -1,6 +1,6 @@
 import Link from "@components/wrapper/link";
 import { useRouter } from "next/router";
-import blogPosts from 'public/lang/posts.json';
+import blogPosts from 'public/lang/lang.json';
 
 export default function HomeCard() {
 
