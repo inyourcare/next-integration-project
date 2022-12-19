@@ -1,4 +1,4 @@
-import HomeCard from '@components/cards/Home';
+import MultiLangTest from '@components/cards/MultiLangTest';
 import BaseLayout from '@components/layouts/base/layout';
 import Head from 'next/head';
 
@@ -8,7 +8,7 @@ export default function Home() {
       <Head>
       </Head>
       <BaseLayout>
-        <HomeCard />
+        <MultiLangTest />
       </BaseLayout>
     </>
   )

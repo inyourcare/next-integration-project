@@ -2,7 +2,7 @@ import NextLink, { LinkProps as NextLinkProps } from 'next/link'
 
 interface LinkProps extends NextLinkProps {
     children: React.ReactNode,
-    className: any
+    className?: any
 }
 export default function Link(props: LinkProps) {
     const { href } = props
