@@ -1,0 +1,286 @@
+.container {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    /* background-color: var(--color-text-black); */
+    background: rgba(0, 0, 0, 0.3);
+    top: 0;
+    left: 0;
+    /* opacity: .3; */
+    z-index: var(--print-dialog-z-index);
+    overflow: scroll;
+}
+
+.dialogCard {
+    width: 730px;
+    /* height: 925px; */
+    /* background-color: var(--color-white); */
+    background: rgba(100%, 100%, 100%, 1);
+    border-radius: 30px;
+    /* opacity: 1; */
+    margin: 50px auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: var(--color-primary);
+    /* font: normal normal normal var(--size-vertival-side-sub-link-font) 'gmarket-sans-medium'; */
+    position: relative;
+    padding: 65px 50px;
+}
+
+.dialogTitle {
+    font: normal normal normal var(--size-vertival-dialog-title-font) 'gmarket-sans-bold';
+}
+
+.progressDiv {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    align-items: center;
+    width: 100%;
+}
+
+.dialogCardContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* padding: 65px 50px; */
+}
+
+/* progress */
+.progressBoxDiv {
+    /* background-color: var(--color-light-teal); */
+    background-color: var(--color-white);
+    border: 1px solid var(--color-dialog-progress-border);
+    width: 20px;
+    height: 20px;
+}
+
+.progressReadyBoxDiv {
+    background-color: var(--color-light-teal);
+}
+
+.progressBoxContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.progressTextDiv {
+    margin-left: 10px;
+}
+
+.progressInput {
+    border: none;
+    text-align: right;
+    height: 20px;
+    /* color: var(--color-text-black);
+    font: normal normal normal var(--size-dialog-progress-font) 'gmarket-sans-ligth'; */
+}
+
+.progressText {
+    color: var(--color-text-black);
+    font: normal normal normal var(--size-dialog-progress-font) 'gmarket-sans-medium';
+}
+
+/* data grid */
+/* .dataGridContainer { */
+/* width: 100%; */
+/* display: grid; */
+/* grid-template-columns: 1fr 1fr 1fr; */
+/* grid-template-columns: repeat(3,minmax(100px,auto)); */
+/* } */
+/* .dataGridDataContainer {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr
+}
+
+.dataGridItem {
+    border: 1px solid black;
+
+    color: var(--color-text-black);
+    font: normal normal normal var(--size-dialog-progress-font) 'gmarket-sans-light';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.dataGridItemTop {
+    color: var(--color-primary);
+    font: normal normal normal var(--size-dialog-progress-font) 'gmarket-sans-medium';
+}
+.dataGridItemCheckbox {
+    width: 18px;
+    height: 18px;
+    background-color: red;
+    border: 1px solid black;
+} */
+/* .dataGridItem:nth-child(4) {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+	grid-row-end: 4;
+} */
+
+/* table */
+.dataTableContainer {
+    width: 100%;
+}
+
+.dataTableContainer table {
+    width: 100%;
+}
+
+.dataTd {
+    /* border: 1px solid black; */
+    color: var(--color-text-black);
+    font: normal normal normal var(--size-dialog-progress-font) 'gmarket-sans-light';
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; */
+    text-align: center;
+    /* width: 20%; */
+    /* display: flex; */
+    vertical-align: middle;
+    text-align: center;
+    border-bottom: 1px solid var(--color-primary);
+    letter-spacing: -0.42px;
+    height: 48px;
+}
+
+.dataTdTop {
+    color: var(--color-primary);
+    font: normal normal normal var(--size-dialog-progress-font) 'gmarket-sans-medium';
+    border-bottom: 1px solid var(--color-primary);
+}
+
+.tableChekbox {
+    width: 18px;
+    height: 18px;
+    /* background-color: red; */
+    border-radius: 3px;
+    border: 1px solid var(--color-dialog-progress-border);
+
+    /* background-image: url('/images/btn-check-on.webp'); */
+    /* background-repeat: no-repeat;
+    object-fit: cover; */
+    cursor: pointer;
+    appearance: none;
+}
+
+.tableChekbox:checked {
+    background-image: url('/images/btn-check-on.webp');
+    border: none;
+}
+
+.tableChekboxContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* buttons */
+.buttonsDiv {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    align-items: center;
+    width: 100%;
+}
+
+.buttonDiv {
+    width: 48%;
+    height: 50px;
+    background-color: var(--color-white);
+    border-radius: 5px;
+    border: 1px solid var(--color-primary);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: var(--color-primary);
+    font: normal normal normal var(--size-vertical-font) 'gmarket-sans-medium';
+    cursor: pointer;
+}
+
+.printBtn {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+
+.dialogCloseBtn {
+    display: none;
+}
+
+@media only screen and (max-width: 830px),
+only screen and (device-width: 912px) {
+    .dialogCard {
+        width: 330px;
+    }
+    .dialogTitle {
+        font: normal normal normal var(--size-vertival-dialog-title-font-m) 'gmarket-sans-bold';
+    }
+    .progressDiv {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        /* height: 80px; */
+        align-items: center;
+        width: 100%;
+        margin-top: 25px;
+    }
+    .progressBoxContainer {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    .progressBoxContainer {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    .progressInput {
+        text-align: center;
+    }
+    .buttonsDiv {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin-top: 15px;
+        margin-bottom: 30px;
+    }
+    .buttonDiv {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+@media only screen and (max-width: 530px),
+only screen and (device-width: 540px) {
+    .dialogCard {
+        margin:0 auto;
+        padding: 20px;
+    }
+
+    .dialogCloseBtn {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background-image: url('/images/header-menu-list-close-btn.svg');
+        background-repeat: no-repeat;
+        /* background-color: red; */
+        cursor: pointer;
+        display: block;
+        top: 5px;
+        right: 5px;
+        opacity: .3;
+    }
+}

@@ -1,0 +1,87 @@
+.footer {
+    /* bottom: 0px; */
+    /* position: absolute; */
+    width: 100%;
+    height: 300px;
+    background-color: var(--color-white);
+    background-image: url('/images/footer-main-background-pc.svg');
+    /* background-size: 100% 100%; */
+}
+
+.footerMainContainer {
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+.mainBannerImageDiv {
+    position: absolute;
+    width: 100%;
+    max-width: 626px;
+    /* width: 626px; */
+    height: 121px;
+    background-image: url('/images/footer-main-banner-title-pc.svg');
+    background-size: 100% 100%;
+    /* object-fit: contain; */
+    margin-top: 76px;
+    margin-left: 114px;
+    /* padding-top: 76px;
+    padding-left: 114px; */
+    /* margin-top: 25%; */
+    transition: ease all .3s;
+}
+
+.mainLogoImageDiv {
+    position: absolute;
+    width: 198px;
+    height: 32px;
+    background-image: url('/images/img-logo.webp');
+    bottom: 35px;
+    right: 40px;
+    transition: ease all .3s;
+}
+
+@media only screen and (max-width: 768px),
+only screen and (device-width: 912px) {
+    .footer {
+        background-image: url('/images/footer-main-background-pad.svg');
+    }
+
+    .mainBannerImageDiv {
+        width: 100%;
+        max-width: 488px;
+        /* width: 488px; */
+        height: 98px;
+        margin-left: 20px;
+        /* padding-left: 20px; */
+    }
+}
+
+@media only screen and (max-width: 488px) {
+    .mainBannerImageDiv {
+        width: 100%;
+        margin-left: 0
+    }
+}
+
+@media only screen and (max-width: 414px),
+only screen and (device-width: 540px) {
+    .footer {
+        background-image: url('/images/footer-main-background-m.svg');
+    }
+
+    .mainBannerImageDiv {
+        background-image: url('/images/footer-main-banner-title-m.svg');
+        width: 100%;
+        /* max-width: 328px; */
+        height: 79px;
+    }
+
+    .mainLogoImageDiv {
+        width: 130px;
+        height: 19px;
+        background-image: url('/images/img-logo-m.webp');
+        right: 50%;
+        transform: translateX(50%);
+    }
+}
