@@ -1,11 +1,11 @@
 import Link from "@components/wrapper/link"
 import { useRouter } from "next/router"
 
-export default function () {
+export default function Slug() {
     const router = useRouter()
-    const { menu, submenu } = router.query
+    const { slug } = router.query
     return (<div>
         <div><Link href="/">HOME</Link></div>
-        {`${menu} ${submenu}`}
+        {`${slug}`}
     </div>)
 }
