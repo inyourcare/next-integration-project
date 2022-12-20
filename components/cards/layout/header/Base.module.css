@@ -105,7 +105,7 @@
     width: 100vw;
     height: 100vh;
     background-color: #FFFFFF;
-    z-index: var(--main-menu-list-z-index);
+    z-index: var(--header-nav-list-z-index);
     transition: ease all .3s;
     transform-origin: 100% 0%;
     overflow-y: scroll;
@@ -237,7 +237,7 @@
     /* background-color: red; */
     /* z-index: var(--home-btn-z-index); */
     margin-left: 5%;
-    z-index: var(--home-btn-z-index);
+    z-index: var(--header-nav-home-btn-z-index);
 }
 
 .homeBtnContainer {
