@@ -3,10 +3,10 @@ import { useRouter } from "next/router"
 
 export default function () {
     const router = useRouter()
-    const { menu, submenu } = router.query
+    const { menu, submenu, detail } = router.query
     return (<div>
         <h1>[menu][submenu]</h1>
         <div><Link href="/">HOME</Link></div>
-        {`${menu} ${submenu}`}
+        {`${menu} ${submenu} ${detail}`}
     </div>)
 }

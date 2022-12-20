@@ -2,14 +2,28 @@ import Link from "@components/wrapper/link"
 import { logger } from "@core/logger"
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next"
 import { useRouter } from "next/router"
+import lang from 'public/lang/lang.json';
+import { useState } from "react";
 
 export default function Slug() {
-    const router = useRouter()
-    const { slug } = router.query
+    const { locale, locales, asPath, push, query } = useRouter();
+    const initialMenus = lang.menus.filter(menu => menu.locale === locale)
+    const initialSubMenus = lang.submenus.filter(submenu => submenu.locale === locale)
+    const { slug } = query
+    const initialState = {
+
+        menus: initialMenus,
+        subMenus: initialSubMenus,
+    }
+    const [state, setState] = useState(initialState)
     return (<div>
         <h1>slug</h1>
         <div><Link href="/">HOME</Link></div>
-        {`${slug?.[0]} ${slug?.[1]} ${slug?.[2]}`}
+        <div>{`${slug?.[0]} ${slug?.[1]} ${slug?.[2]}`}</div>
+        <div>
+            {`${state.menus.filter(menu => menu.key === slug?.[0]).length} 
+            ${state.subMenus.filter(submenu => (submenu.origin === slug?.[0]) && (submenu.key === slug?.[1])).length}`}
+        </div>
     </div>)
 }
 
