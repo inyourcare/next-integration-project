@@ -9,7 +9,7 @@ import lang from 'public/lang/lang.json';
 interface BaseHeaderProps {
     toggleFooter: () => void
 }
-export default function BaseHeaderCard({toggleFooter}:BaseHeaderProps) {
+export default function BaseHeaderCard({ toggleFooter }: BaseHeaderProps) {
 
     const { locale, locales, asPath, push } = useRouter();
     const initialMenus = lang.menus.filter(menu => menu.locale === locale)
@@ -67,14 +67,14 @@ export default function BaseHeaderCard({toggleFooter}:BaseHeaderProps) {
         return subRouteList(state.menuOpenMap[menuKey], menuKey);
     }
     function subRouteList(identifier: boolean, menuKey: string) {
-        const subs = state.subMenus.filter(submenu=>submenu.origin === menuKey)
+        const subs = state.subMenus.filter(submenu => submenu.origin === menuKey)
         if (subs.length > 0)
             return (
                 <div>
                     <ul data-columns={2} className={`${styles.menuListSubItemUl} ${(identifier === true) && styles.additionalPadding}`}>
                         {subs.map((subMenu, index) => {
                             return (<li className={`${styles.menuListSubItemLi} ${(identifier === false) && styles.folding}`} key={index}>
-                                <Link href={`${menuKey}/${subMenu.key}`} className={`${styles.menuListSubItemLink}`}>{subMenu.name}</Link>
+                                <Link href={`${menuKey}/${subMenu.key}/1`} className={`${styles.menuListSubItemLink}`}>{subMenu.name}</Link>
                             </li>)
                         })}
                     </ul>
@@ -103,19 +103,21 @@ export default function BaseHeaderCard({toggleFooter}:BaseHeaderProps) {
                 <nav className={styles.nav}>
                     <ul className={styles.ul}>
                         {state.menus.map((menu, index) => {
-                            return (
-                                <li
-                                    key={index}
-                                >
-                                    <Link
-                                        href={`${menu.key}`}
-                                        className={
-                                            `${styles.link} 
+                            const sameOriginSubs = state.subMenus.filter(submenu => submenu.origin === menu.key)
+                            if (sameOriginSubs.length > 0)
+                                return (
+                                    <li
+                                        key={index}
+                                    >
+                                        <Link
+                                            href={`${menu.key}/${sameOriginSubs.at(0)?.key}/1`}
+                                            className={
+                                                `${styles.link} 
                                             ${asPath.split('/')[1] === menu.key && styles.selectedLink}`}>
-                                        {menu.name}
-                                    </Link>
-                                </li>
-                            );
+                                            {menu.name}
+                                        </Link>
+                                    </li>
+                                );
                         })}
                     </ul>
                 </nav>
@@ -128,16 +130,20 @@ export default function BaseHeaderCard({toggleFooter}:BaseHeaderProps) {
                 </div>
                 <div>
                     {state.menus.map((menu, index) => {
-                        return (<div key={index}>
-                            <div
-                                className={styles.menuListItemDiv}
-                            >
-                                <Link href={menu.key} className={`${styles.menulistLink}`}>{menu.name}</Link>
-                                <div className={styles.menuListItemExpandBtn} onClick={(e) => menuListItemExpandBtnOnClick(e, menu.key)}></div>
+                        const sameOriginSubs = state.subMenus.filter(submenu => submenu.origin === menu.key)
+                        if (sameOriginSubs.length > 0)
+                            return (<div key={index}>
+                                <div
+                                    className={styles.menuListItemDiv}
+                                >
+                                    <Link href={`${menu.key}/${sameOriginSubs.at(0)?.key}/1`} className={`${styles.menulistLink}`}>
+                                        {menu.name}
+                                    </Link>
+                                    <div className={styles.menuListItemExpandBtn} onClick={(e) => menuListItemExpandBtnOnClick(e, menu.key)}></div>
+                                </div>
+                                {renderSwitch(menu.key)}
                             </div>
-                            {renderSwitch(menu.key)}
-                        </div>
-                        );
+                            );
                     })}
                 </div>
             </div>
