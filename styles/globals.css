@@ -137,8 +137,9 @@ table {
 	--print-dialog-z-index: 2;
 
 	--color-text-primary: #FFFFFF;
+	--color-text-reverse: #2B9D63;
+
 	--color-primary: #2B9D63;
-	
 	--color-white: #FFFFFF;
 	--color-light-teal: #a1d3ba;
 

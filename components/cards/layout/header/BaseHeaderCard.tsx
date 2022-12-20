@@ -62,17 +62,19 @@ export default function BaseHeaderCard() {
         return subRouteList(state.menuOpenMap[menuKey], menuKey);
     }
     function subRouteList(identifier: boolean, menuKey: string) {
-        return (
-            <div>
-                <ul data-columns={2} className={`${styles.menuListSubItemUl} ${(identifier === true) && styles.additionalPadding}`}>
-                    {state.subMenus?.map((subMenu, index) => {
-                        return (<li className={`${styles.menuListSubItemLi} ${(identifier === false) && styles.folding}`} key={index}>
-                            <Link href={`${menuKey}/${subMenu.key}`} className={`${styles.menuListSubItemLink}`}>{subMenu.name}</Link>
-                        </li>)
-                    })}
-                </ul>
-            </div>
-        )
+        const subs = state.subMenus.filter(submenu=>submenu.origin === menuKey)
+        if (subs.length > 0)
+            return (
+                <div>
+                    <ul data-columns={2} className={`${styles.menuListSubItemUl} ${(identifier === true) && styles.additionalPadding}`}>
+                        {subs.map((subMenu, index) => {
+                            return (<li className={`${styles.menuListSubItemLi} ${(identifier === false) && styles.folding}`} key={index}>
+                                <Link href={`${menuKey}/${subMenu.key}`} className={`${styles.menuListSubItemLink}`}>{subMenu.name}</Link>
+                            </li>)
+                        })}
+                    </ul>
+                </div>
+            )
     }
     ////////
 
