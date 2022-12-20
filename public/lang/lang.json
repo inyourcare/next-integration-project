@@ -47,6 +47,7 @@
         "name": "third",
         "key": "third"
       },
+
       {
         "locale": "ko-KR",
         "name": "first",
@@ -59,6 +60,45 @@
       },
       {
         "locale": "ko-KR",
+        "name": "third",
+        "key": "third"
+      }
+    ],
+    "submenu": [
+      {
+        "locale": "en-US",
+        "origin": "first",
+        "name": "first",
+        "key": "first"
+      },
+      {
+        "locale": "en-US",
+        "origin": "first",
+        "name": "second",
+        "key": "second"
+      },
+      {
+        "locale": "en-US",
+        "origin": "first",
+        "name": "third",
+        "key": "third"
+      },
+
+      {
+        "locale": "ko-KR",
+        "origin": "first",
+        "name": "first",
+        "key": "first"
+      },
+      {
+        "locale": "ko-KR",
+        "origin": "first",
+        "name": "second",
+        "key": "second"
+      },
+      {
+        "locale": "ko-KR",
+        "origin": "first",
         "name": "third",
         "key": "third"
       }
