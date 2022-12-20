@@ -11,7 +11,7 @@ export const authOptions: NextAuthOptions = {
             },
             async authorize(credentials, req) {
                 // console.log(credentials, req)
-                if (credentials?.username==='hi')
+                if (credentials?.username === 'hi')
                     return { name: "J Smith", email: "jsmith@example.com" } as User
                 return null
             }
@@ -31,5 +31,14 @@ export const authOptions: NextAuthOptions = {
             return session
         }
     },
+    secret: process.env['NEXTAUTH_SECRET'],
+    pages: {
+        signIn: '/auth/signin',
+        signOut: '/auth/signout',
+        error: '/auth/error', // Error code passed in query string as ?error=
+        verifyRequest: '/auth/verify-request', // (used for check email message)
+        newUser: '/auth/new-user' // New users will be directed here on first sign in (leave the property out if not of interest)
+    }
 }
+
 export default NextAuth(authOptions)
