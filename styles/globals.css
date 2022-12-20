@@ -134,8 +134,21 @@ table {
 /* variables */
 
 :root {
-  --color-text-primary: #FFFFFF;
-  --color-primary: #2B9D63;
+	--print-dialog-z-index: 2;
+
+	--color-text-primary: #FFFFFF;
+	--color-primary: #2B9D63;
+	
+	--color-white: #FFFFFF;
+	--color-light-teal: #a1d3ba;
+
+	--color-dialog-progress-border: #329c65;
+
+	--size-vertival-dialog-title-font: 26px/normal;
+	--size-vertival-dialog-title-font-m: 18px/normal;
+	--size-dialog-progress-font: 14px/normal;
+
+
 	/* --main-menu-list-z-index: 1;
 	--print-dialog-z-index: 2;
 	--home-btn-z-index: 1;
