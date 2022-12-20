@@ -1,4 +1,4 @@
-import BaseHeader from "@components/cards/layout/header/base";
+import BaseHeader from "@components/cards/layout/header/BaseHeaderCard";
 
 export default function Header() {
     return (

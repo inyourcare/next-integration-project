@@ -1,4 +1,4 @@
-import MultiLangTest from '@components/cards/MultiLangTest';
+import MultiLangTest from '@components/cards/TestHomeCard';
 import BaseLayout from '@components/layouts/base/layout';
 import Head from 'next/head';
 

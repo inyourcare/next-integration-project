@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import blogPosts from 'public/lang/lang.json';
 import { useState } from "react";
 
-export default function MultiLangTestCard() {
+export default function TestHomeCard() {
 
     const { locale, locales, asPath } = useRouter();
     const [printDialogOpen, setPrintDialogOpen] = useState(false)

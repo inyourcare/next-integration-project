@@ -1,4 +1,4 @@
-export default function BaseHeader() {
+export default function BaseHeaderCard() {
     return (<header>
         baseheader
     </header>)
