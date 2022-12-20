@@ -30,5 +30,37 @@
         "description": "Questo è il primo post in italiano pubblicato nel blog",
         "image": "https://source.unsplash.com/xG8IQMqMITM/1600x900"
       }
+    ],
+    "menu": [
+      {
+        "locale": "en-US",
+        "name": "first",
+        "key": "first"
+      },
+      {
+        "locale": "en-US",
+        "name": "second",
+        "key": "second"
+      },
+      {
+        "locale": "en-US",
+        "name": "third",
+        "key": "third"
+      },
+      {
+        "locale": "ko-KR",
+        "name": "first",
+        "key": "first"
+      },
+      {
+        "locale": "ko-KR",
+        "name": "second",
+        "key": "second"
+      },
+      {
+        "locale": "ko-KR",
+        "name": "third",
+        "key": "third"
+      }
     ]
   }
