@@ -127,7 +127,7 @@
     cursor: pointer;
     width: 40px;
     height: 40px;
-    background-image: url('/images/main-expand-btn.svg');
+    background-image: url('/images/header-expand-btn.svg');
     background-repeat: no-repeat;
     /* background-size: contain; */
     background-position: center;
@@ -175,10 +175,10 @@
     cursor: pointer;
 }
 
-.ul>li:last-child>a {
+/* .ul>li:last-child>a {
     background-color: var(--color-white);
     color: var(--color-text-reverse);
-}
+} */
 
 .link {
     color: var(--color-text-primary);
@@ -231,7 +231,7 @@
     height: calc(max(30px, min(40px, 3vw)));
     /* background-color: red; */
     cursor: pointer;
-    background-image: url('/images/home_w.png');
+    background-image: url('/images/header-home-w.png');
     background-repeat: no-repeat;
     background-size: contain;
     /* background-color: red; */
@@ -256,7 +256,7 @@
     height: 40px;
     /* background-color: red; */
     cursor: pointer;
-    background-image: url('/images/home_g.png');
+    background-image: url('/images/header-home-g.png');
     background-repeat: no-repeat;
     background-size: contain;
     /* background-color: red; */
