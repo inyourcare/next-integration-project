@@ -11,6 +11,7 @@ export default function MultiLangTestCard() {
     return (<div>
         <PrintDialog open={printDialogOpen} setOpen={setPrintDialogOpen} />
         <button onClick={()=>setPrintDialogOpen(true)}>dialog open</button>
+        <div><Link href="/test/sublink">dynamic link</Link></div>
         <h1>다국어 설정</h1>
         <div>
             {locales?.map((l, i) => {
