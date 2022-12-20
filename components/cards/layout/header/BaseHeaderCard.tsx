@@ -2,11 +2,14 @@ import PrintDialog from "@components/dialogs/print"
 import Link from "@components/wrapper/link"
 import { logger } from "@core/logger"
 import { useRouter } from "next/router"
-import { MouseEvent, useEffect, useState } from "react"
+import { Dispatch, MouseEvent, SetStateAction, useEffect, useState } from "react"
 import styles from './Base.module.css'
 import lang from 'public/lang/lang.json';
 
-export default function BaseHeaderCard() {
+interface BaseHeaderProps {
+    toggleFooter: () => void
+}
+export default function BaseHeaderCard({toggleFooter}:BaseHeaderProps) {
 
     const { locale, locales, asPath, push } = useRouter();
     const initialMenus = lang.menus.filter(menu => menu.locale === locale)
@@ -40,10 +43,12 @@ export default function BaseHeaderCard() {
 
     function mainExpandOnClick(e: MouseEvent<HTMLDivElement>) {
         logger.debug('mainExpandOnClick', e)
+        toggleFooter()
         setState({ ...state, menuListOpen: true })
     }
     function menuListCloseBtnOnClick(e: MouseEvent<HTMLDivElement>) {
         logger.debug('menuListCloseBtnOnClick', e)
+        toggleFooter()
         setState({ ...state, menuListOpen: false })
     }
     function menuListItemExpandBtnOnClick(e: MouseEvent<HTMLDivElement>, menuKey: string) {
