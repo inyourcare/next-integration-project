@@ -5,6 +5,7 @@ import { useRouter } from "next/router"
 import { Dispatch, MouseEvent, SetStateAction, useEffect, useState } from "react"
 import styles from './Base.module.css'
 import lang from 'public/lang/lang.json';
+import AuthBtn from "@components/auth/AuthBtn"
 
 interface BaseHeaderProps {
     toggleFooter: () => void
@@ -102,6 +103,7 @@ export default function BaseHeaderCard({ toggleFooter }: BaseHeaderProps) {
             <div className={styles.navDiv}>
                 <nav className={styles.nav}>
                     <ul className={styles.ul}>
+                        <li key={'authbtn'}><AuthBtn></AuthBtn></li>
                         {state.menus.map((menu, index) => {
                             const sameOriginSubs = state.subMenus.filter(submenu => submenu.origin === menu.key)
                             if (sameOriginSubs.length > 0)
