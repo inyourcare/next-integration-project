@@ -1,13 +1,19 @@
+// import { hashPassword } from '@core/password'
+import sha256 from "crypto-js/sha256";
 import { PrismaClient } from '@prisma/client'
 import { ROLE } from './types'
+const hashPassword = (password: string) => {
+    return sha256(password).toString();
+};
 const prisma = new PrismaClient()
 async function main() {
     const alice = await prisma.user.upsert({
-        where: { email: 'alice@prisma.io' },
+        where: { email: 'admin@sotong.kr' },
         update: {},
         create: {
             email: 'admin@sotong.kr',
             name: 'Admin',
+            password: hashPassword('pass12#$'),
             // posts: {
             //     create: {
             //         title: 'Check out Prisma with Next.js',
@@ -23,11 +29,12 @@ async function main() {
         },
     })
     const bob = await prisma.user.upsert({
-        where: { email: 'bob@prisma.io' },
+        where: { email: 'user@sotong.kr' },
         update: {},
         create: {
             email: 'user@sotong.kr',
             name: 'User',
+            password: hashPassword('pass12#$'),
             // posts: {
             //     create: [
             //         {
