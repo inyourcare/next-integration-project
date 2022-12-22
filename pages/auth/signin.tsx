@@ -1,13 +1,7 @@
-import { isNextAuthDisabled } from "@core/routing"
-import { useRouter } from "next/router"
-import { useEffect } from "react"
+import { useNextAuthDisabled } from "@core/hooks/useNextAuthDisabled"
 
 export default function () {
-    const { back } = useRouter()
-    useEffect(() => {
-        if (isNextAuthDisabled())
-            back()
-    }, [back])
+    useNextAuthDisabled()
     return (<div>
         signin
     </div>)
