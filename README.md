@@ -101,10 +101,12 @@ npx prisma db push
 npx prisma studio
 ```
 
-마이그레이션 코드 -> 스키마만 로드함, 변경사항도 체크함
+### seeding 
+[seeding](https://www.prisma.io/docs/guides/database/seed-database)
 ```
-npx prisma migrate dev
+npx prisma db seed
 ```
+
 ### 프리즈마 클라이언트 이용
 ```
 npx prisma generate
@@ -114,6 +116,12 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 ```
 
+마이그레이션 코드 -> 스키마만 로드함, 변경사항도 체크함
+```
+npx prisma migrate dev
+```
+
+
 ### 프리즈마 데이터 타입
 [설명](https://www.prisma.io/docs/concepts/components/prisma-migrate/supported-types-and-db-features)
 
@@ -121,12 +129,6 @@ const prisma = new PrismaClient()
 ```
 모든 필드 찾기
 console.log("Account fields:", Prisma.dmmf.datamodel.models.find(model => model.name === "Account").fields)
-```
-
-### seeding 
-[seeding](https://www.prisma.io/docs/guides/database/seed-database)
-```
-npx prisma db seed
 ```
 
 ### Cannot use import statement outside a module

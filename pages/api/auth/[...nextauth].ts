@@ -36,10 +36,19 @@ export const authOptions: NextAuthOptions = {
             }
         })
     ],
-    adapter: PrismaAdapter(prisma),
+    // adapter: PrismaAdapter(prisma),
     callbacks: {
-        async jwt({ token, account }) {
+        // async redirect({ url, baseUrl }: {url: string,baseUrl: string}) {
+        //     logger.debug("redirect callback", url, baseUrl)
+        //     // Allows relative callback URLs
+        //     if (url.startsWith("/")) return `${baseUrl}${url}`
+        //     // Allows callback URLs on the same origin
+        //     else if (new URL(url).origin === baseUrl) return url
+        //     return baseUrl
+        // },
+        async jwt({ token, user, account, profile, isNewUser }) {
             // Persist the OAuth access_token to the token right after signin
+            logger.debug("jwt callback", account)
             if (account) {
                 token.accessToken = account.access_token
             }
@@ -47,11 +56,13 @@ export const authOptions: NextAuthOptions = {
         },
         async session({ session, token, user }) {
             // Send properties to the client, like an access_token from a provider.
+            logger.debug("session callback", token.accessToken)
             session.accessToken = token.accessToken
             return session
         },
         async signIn({ user, account, profile, email, credentials }) {
-            logger.debug("signIn callback", user, account, profile, email, credentials)
+            // logger.debug("signIn callback", user, account, profile, email, credentials)
+            logger.debug("signIn callback")
             return true
         },
     },
