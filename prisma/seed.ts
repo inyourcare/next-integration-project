@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client'
+import { ROLE } from './types'
 const prisma = new PrismaClient()
 async function main() {
     const alice = await prisma.user.upsert({
@@ -16,7 +17,7 @@ async function main() {
             // },
             roles: {
                 create: {
-                    role: 'ADMIN'
+                    role: ROLE.ADMIN
                 }
             }
         },
@@ -43,7 +44,7 @@ async function main() {
             // },
             roles: {
                 create: {
-                    role: 'USER'
+                    role: ROLE.USER
                 }
             }
         },
