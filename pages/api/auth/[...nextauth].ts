@@ -1,5 +1,7 @@
 import NextAuth, { NextAuthOptions, User } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials";
+import { PrismaAdapter } from "@next-auth/prisma-adapter"
+import prisma from '@custdatabase/prisma'
 export const authOptions: NextAuthOptions = {
     // Configure one or more authentication providers
     providers: [
@@ -17,6 +19,7 @@ export const authOptions: NextAuthOptions = {
             }
         })
     ],
+    adapter: PrismaAdapter(prisma),
     callbacks: {
         async jwt({ token, account }) {
             // Persist the OAuth access_token to the token right after signin
