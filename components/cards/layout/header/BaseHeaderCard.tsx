@@ -6,6 +6,7 @@ import { Dispatch, MouseEvent, SetStateAction, useEffect, useState } from "react
 import styles from './Base.module.css'
 import lang from 'public/lang/lang.json';
 import AuthBtn from "@components/auth/AuthBtn"
+import { useAsPAthChanged } from "@core/hooks/useAsPathChanged"
 
 interface BaseHeaderProps {
     toggleFooter: () => void
@@ -75,7 +76,7 @@ export default function BaseHeaderCard({ toggleFooter }: BaseHeaderProps) {
                     <ul data-columns={2} className={`${styles.menuListSubItemUl} ${(identifier === true) && styles.additionalPadding}`}>
                         {subs.map((subMenu, index) => {
                             return (<li className={`${styles.menuListSubItemLi} ${(identifier === false) && styles.folding}`} key={index}>
-                                <Link href={`${menuKey}/${subMenu.key}/1`} className={`${styles.menuListSubItemLink}`}>{subMenu.name}</Link>
+                                <Link href={`/${menuKey}/${subMenu.key}/1`} className={`${styles.menuListSubItemLink}`}>{subMenu.name}</Link>
                             </li>)
                         })}
                     </ul>
@@ -83,11 +84,7 @@ export default function BaseHeaderCard({ toggleFooter }: BaseHeaderProps) {
             )
     }
     ////////
-
-    useEffect(() => {
-        logger.debug('router.asPath changed')
-        setState({ ...state, menuListOpen: false })
-    }, [asPath])
+    useAsPAthChanged(()=>setState({ ...state, menuListOpen: false }))
 
     function handleHomeBtnClick() {
         push('/')
@@ -112,7 +109,7 @@ export default function BaseHeaderCard({ toggleFooter }: BaseHeaderProps) {
                                         key={index}
                                     >
                                         <Link
-                                            href={`${menu.key}/${sameOriginSubs.at(0)?.key}/1`}
+                                            href={`/${menu.key}/${sameOriginSubs.at(0)?.key}/1`}
                                             className={
                                                 `${styles.link} 
                                             ${asPath.split('/')[1] === menu.key && styles.selectedLink}`}>
@@ -138,7 +135,7 @@ export default function BaseHeaderCard({ toggleFooter }: BaseHeaderProps) {
                                 <div
                                     className={styles.menuListItemDiv}
                                 >
-                                    <Link href={`${menu.key}/${sameOriginSubs.at(0)?.key}/1`} className={`${styles.menulistLink}`}>
+                                    <Link href={`/${menu.key}/${sameOriginSubs.at(0)?.key}/1`} className={`${styles.menulistLink}`}>
                                         {menu.name}
                                     </Link>
                                     <div className={styles.menuListItemExpandBtn} onClick={(e) => menuListItemExpandBtnOnClick(e, menu.key)}></div>
