@@ -239,6 +239,11 @@
     margin-left: 5%;
     z-index: var(--header-nav-home-btn-z-index);
 }
+.authBtnDiv{
+    cursor: pointer;
+    margin-left: 5%;
+    z-index: var(--header-nav-home-btn-z-index);
+}
 
 .homeBtnContainer {
     height: 70px;

@@ -97,13 +97,13 @@ export default function BaseHeaderCard({ toggleFooter }: BaseHeaderProps) {
         <header className={styles.header}>
             <PrintDialog open={printDialogOpen} setOpen={setPrintDialogOpen} />
             <div className={styles.homeBtnContainer}>
-                <div className={styles.homeBtnDiv} onClick={handleHomeBtnClick}></div>
+                {/* <div className={styles.homeBtnDiv} onClick={handleHomeBtnClick}></div> */}
+                <div className={styles.authBtnDiv}><AuthBtn></AuthBtn></div>
                 <div onClick={mainExpandOnClick} className={styles.expandBtnImageDiv}></div>
             </div>
             <div className={styles.navDiv}>
                 <nav className={styles.nav}>
                     <ul className={styles.ul}>
-                        <li key={'authbtn'}><AuthBtn></AuthBtn></li>
                         {state.menus.map((menu, index) => {
                             const sameOriginSubs = state.subMenus.filter(submenu => submenu.origin === menu.key)
                             if (sameOriginSubs.length > 0)

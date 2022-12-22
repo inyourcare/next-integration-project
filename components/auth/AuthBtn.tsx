@@ -1,6 +1,9 @@
 import { useSession, signIn, signOut } from "next-auth/react"
+import { useRouter } from "next/router"
 export default function AuthBtn() {
     const { data: session } = useSession()
+    if (process.env.NEXT_PUBLIC_NEXTAUTH === 'disable')
+        return (<></>)
     if (session && session.user) {
         return (
             <>
