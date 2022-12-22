@@ -77,3 +77,66 @@ docker save -o [save file name].tar [image name]
         return (<div><span>{i}</span><span>{`${blogPost.title} ${blogPost.description}`}</span></div>)
     })}
 ```
+
+## Prisma
+
+```
+npm install prisma --save-dev
+npx prisma init --datasource-provider sqlite
+```
+
+### Prisma database control
+[https://next-auth.js.org/adapters/prisma]
+```
+DATABASE_URL="file:./dev.db" 
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+```
+설정을 활용하면 sqlite 로도 사용 가능
+아래는 스키마 파일 생성 후 적용 
+```
+npx prisma db push
+npx prisma studio
+```
+
+마이그레이션 코드 -> 스키마만 로드함, 변경사항도 체크함
+```
+npx prisma migrate dev
+```
+### 프리즈마 클라이언트 이용
+```
+npx prisma generate
+->
+You can now start using Prisma Client in your code. Reference: https://pris.ly/d/client
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
+```
+
+### 프리즈마 데이터 타입
+[설명](https://www.prisma.io/docs/concepts/components/prisma-migrate/supported-types-and-db-features)
+
+### 프리즈마 기타
+```
+모든 필드 찾기
+console.log("Account fields:", Prisma.dmmf.datamodel.models.find(model => model.name === "Account").fields)
+```
+
+### seeding 
+[seeding](https://www.prisma.io/docs/guides/database/seed-database)
+```
+npx prisma db seed
+```
+
+### Cannot use import statement outside a module
+```
+# package.json
+
+...
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
+...
+
+```

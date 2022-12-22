@@ -1,0 +1,385 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  // provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// Auth start
+model Account {
+  id String @id @default(cuid())
+
+  userId                   String
+  type                     String
+  provider                 String
+  providerAccountId        String
+  refresh_token            String? // @db.Text
+  access_token             String? // @db.Text
+  expires_at               Int?
+  refresh_token_expires_in Int?
+  token_type               String?
+  scope                    String?
+  id_token                 String? // @db.Text
+  session_state            String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id String @id @default(cuid())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  sessionToken String   @unique
+  expires      DateTime
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// enum Role {
+//   USER
+//   ADMIN
+//   MEMBER
+// }
+
+model UserRoles {
+  id     Int     @id @default(autoincrement())
+  user   User?   @relation(fields: [userId], references: [id])
+  userId String?
+  // role   Role    @default(USER)
+  role   String  @default("USER")
+
+  @@unique([userId, role])
+}
+
+model User {
+  id String @id @default(cuid())
+
+  name          String?
+  email         String?     @unique
+  emailVerified DateTime?
+  password      String?
+  image         String?
+  // role          Role        @default(USER)
+  roles         UserRoles[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  boards        Board[]
+  posts         Post[]
+  comments      Comment[]
+  accounts      Account[]
+  sessions      Session[]
+  menusCreator  Menu[]        @relation("creator")
+  menusModifier Menu[]        @relation("modifier")
+  projects      ProjectUser[]
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// Auth end
+// Social start
+// enum BoardType {
+//   NORMAL
+// }
+
+// enum BoardSkinType {
+//   NORMAL
+// }
+
+model Board {
+  id Int @id @default(autoincrement())
+
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id])
+
+  boardName       String
+  greetingText    String //@db.VarChar(300)
+  postCategories  String //@db.VarChar(300)
+  optionalChoices String //@db.VarChar(300)
+
+  // boardType     BoardType     @default(NORMAL)
+  // boardSkinType BoardSkinType @default(NORMAL)
+  boardType     String @default("NORMAL")
+  boardSkinType String @default("NORMAL")
+
+  onlyAdmin         Boolean @default(false)
+  ableToReply       Boolean @default(false)
+  allowUnknown      Boolean @default(false)
+  allowUnknownReply Boolean @default(false)
+  allowFileAttach   Boolean @default(false)
+  commentable       Boolean @default(false)
+  deleted           Boolean @default(false)
+  invisable         Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  posts Post[]
+}
+
+model Post {
+  id Int @id @default(autoincrement())
+
+  boardId Int?
+  board   Board?  @relation(fields: [boardId], references: [id])
+  userId  String?
+  user    User?   @relation(fields: [userId], references: [id])
+
+  title                    String  //@db.VarChar(300)
+  content                  String? //@db.VarChar(3000)
+  category                 String?
+  visibleRegisterName      String?
+  unRegisteredUserPassword String?
+  depth                    Int     @default(0)
+  step                     Int     @default(0)
+  groupId                  Int     @default(0)
+  parentId                 Int     @default(0)
+  readCnt                  Int     @default(0)
+
+  published Boolean @default(false)
+  deleted   Boolean @default(false)
+  invisable Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  files    File[]
+  comments Comment[]
+}
+
+model File {
+  id Int @id @default(autoincrement())
+
+  originalFileName String?
+  serverFilePath   String? //@db.VarChar(500)
+  size             Int?
+  deleted          Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  postId Int?
+  post   Post? @relation(fields: [postId], references: [id], onDelete: Cascade)
+}
+
+model Comment {
+  id Int @id @default(autoincrement())
+
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id])
+
+  content                  String? //@db.VarChar(3000)
+  visibleRegisterName      String?
+  unRegisteredUserPassword String?
+  depth                    Int     @default(0)
+  step                     Int     @default(0)
+  groupId                  Int     @default(0)
+  parentId                 Int     @default(0)
+
+  deleted   Boolean @default(false)
+  invisable Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  postId Int?
+  post   Post? @relation(fields: [postId], references: [id])
+}
+
+// Social end
+// Admin managemet start
+// enum HtmlFragmentType {
+//   FOOTER
+//   HEADER
+// }
+
+model HtmlFragment {
+  id Int @id @default(autoincrement())
+
+  creatorId  String?
+  modifierId String?
+
+  innerHtml        String?         // @db.VarChar(3000)
+  // htmlFragmentType HtmlFragmentType
+  htmlFragmentType String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Homepage {
+  id Int @id @default(autoincrement())
+
+  creatorId  String?
+  modifierId String?
+
+  name   String?
+  domain String?
+
+  adminEmailAddress String?
+  additionalMetaTag String? //@db.VarChar(3000)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// enum MenuType {
+//   CONTENTS
+//   DIR
+//   BOARD
+// }
+
+model Menu {
+  id Int @id @default(autoincrement())
+
+  creatorId  String?
+  creator    User?   @relation("creator", fields: [creatorId], references: [id])
+  modifierId String?
+  modifier   User?   @relation("modifier", fields: [modifierId], references: [id])
+
+  name           String
+  englishName    String?
+  code           String   @unique
+  greetings      String?  //@db.VarChar(300)
+  redirectUrl    String?
+  contentsHeader String?  //@db.VarChar(3000)
+  contentsFooter String?  //@db.VarChar(3000)
+  order          Int      @default(0)
+  depth          Int      @default(0)
+  step           Int      @default(0)
+  groupId        Int      @default(0)
+  parentId       Int      @default(0)
+  // menuType       MenuType @default(DIR)
+  menuType       String @default("DIR")
+
+  deleted   Boolean @default(false)
+  invisable Boolean @default(false)
+
+  content Content?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Content {
+  id Int @id @default(autoincrement())
+
+  creatorId  String?
+  modifierId String?
+
+  menuId Int  @unique
+  menu   Menu @relation(fields: [menuId], references: [id], onDelete: Cascade)
+
+  name String?
+  body String? //@db.VarChar(3000)
+
+  deleted Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Popup {
+  id Int @id @default(autoincrement())
+
+  creatorId  String?
+  modifierId String?
+
+  start      DateTime @default(now())
+  end        DateTime @updatedAt
+  title      String?  //@db.VarChar(300)
+  code       String?
+  heightFrom Int?
+  widthFrom  Int?
+  height     Int?
+  Width      Int?
+
+  published Boolean @default(false)
+  deleted   Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Admin managemet end
+
+model ProjectUser {
+  id        String   @id @default(uuid())
+  project   Project? @relation(fields: [projectId], references: [id])
+  user      User?    @relation(fields: [userId], references: [id])
+  userId    String?
+  projectId Int?
+
+  @@unique([userId, projectId])
+}
+
+model Project {
+  id Int @id @default(autoincrement())
+
+  users      ProjectUser[]
+  schedules  ProjectSchedule[]
+  webServers WebServer[]
+
+  projectName        String
+  projectEnglishName String
+
+  projectStartDate            DateTime?
+  projectEndDate              DateTime?
+  projectMaintananceStartDate DateTime?
+  projectMaintananceEndDate   DateTime?
+
+  memo String? //@db.VarChar(3000)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// enum ProjectScheduleType {
+//   MAINTANANCE
+//   DEVELOPMENT
+//   DESIGN
+//   PLANNING
+// }
+
+model ProjectSchedule {
+  id        Int                 @id @default(autoincrement())
+  project   Project?            @relation(fields: [projectId], references: [id])
+  projectId Int?
+  // type      ProjectScheduleType
+  type      String
+  startDate DateTime?
+  endDate   DateTime?
+  memo      String
+}
+
+model WebServer {
+  id               Int      @id @default(autoincrement())
+  Project          Project? @relation(fields: [projectId], references: [id])
+  projectId        Int?
+  serverName       String
+  serverIp         String
+  serverPort       String
+  referenceAddress String
+  memo             String
+}
