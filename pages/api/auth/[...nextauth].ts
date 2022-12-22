@@ -48,16 +48,23 @@ export const authOptions: NextAuthOptions = {
         // },
         async jwt({ token, user, account, profile, isNewUser }) {
             // Persist the OAuth access_token to the token right after signin
-            logger.debug("jwt callback", account)
+            logger.debug("jwt callback")
             if (account) {
                 token.accessToken = account.access_token
             }
+            const userRole = user?.roles;
+            if (userRole) token.roles = userRole
             return token
         },
         async session({ session, token, user }) {
             // Send properties to the client, like an access_token from a provider.
-            logger.debug("session callback", token.accessToken)
+            logger.debug("session callback")
             session.accessToken = token.accessToken
+            const userRole = token.roles;
+            const userId = token.sub
+            if (userRole) session.user.roles = userRole;
+            if (userId) session.user.id = userId
+            logger.debug("session callback ends width", session.user.id, session.user.roles)
             return session
         },
         async signIn({ user, account, profile, email, credentials }) {
