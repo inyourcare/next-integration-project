@@ -12,7 +12,6 @@ export default function SignIn({ data }: InferGetServerSidePropsType<typeof getS
             <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
             username : <input type="text" name="username" required />
             password : <input type="password" name="password" />
-            <input type={'checkbox'} value='remember' />
             <input type="submit" />
         </form>
     </div>)
