@@ -142,3 +142,10 @@ console.log("Account fields:", Prisma.dmmf.datamodel.models.find(model => model.
 ...
 
 ```
+
+
+## git history 제거
+```
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch ./.env" --prune-empty --tag-name-filter cat -- --all
+git push origin --force --all
+```
