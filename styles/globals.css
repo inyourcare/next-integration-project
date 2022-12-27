@@ -137,6 +137,7 @@ table {
 	--print-dialog-z-index: 2;
 	--header-nav-list-z-index: 1;
 	--header-nav-home-btn-z-index: 1;
+	--carousel-container-z-index: -1;
 
 	--color-text-primary: #FFFFFF;
 	--color-text-reverse: #2B9D63;
