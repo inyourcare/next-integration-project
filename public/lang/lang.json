@@ -2,6 +2,11 @@
     "menus": [
       {
         "locale": "en-US",
+        "name": "carousel",
+        "key": "carousel"
+      },
+      {
+        "locale": "en-US",
         "name": "first",
         "key": "first"
       },
@@ -16,6 +21,11 @@
         "key": "third"
       },
 
+      {
+        "locale": "ko-KR",
+        "name": "carousel",
+        "key": "carousel"
+      },
       {
         "locale": "ko-KR",
         "name": "first",
@@ -35,6 +45,12 @@
     "submenus": [
       {
         "locale": "en-US",
+        "origin": "carousel",
+        "name": "first",
+        "key": "first"
+      },
+      {
+        "locale": "en-US",
         "origin": "first",
         "name": "first",
         "key": "first"
@@ -70,6 +86,12 @@
         "key": "third"
       },
 
+      {
+        "locale": "ko-KR",
+        "origin": "carousel",
+        "name": "first",
+        "key": "first"
+      },
       {
         "locale": "ko-KR",
         "origin": "first",
