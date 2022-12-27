@@ -3,9 +3,33 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import prisma from '@custdatabase/prisma'
 import { logger } from "@core/logger";
+import Kakao from 'next-auth/providers/kakao';
+import Naver from 'next-auth/providers/naver';
+import Google from 'next-auth/providers/google';
+
+const kakaoClientId = process.env.KAKAO_CLIENT_ID
+const kakaoClientSecret = process.env.KAKAO_CLIENT_SECRET
+const naverClientId = process.env.NAVER_CLIENT_ID
+const naverClientSecret = process.env.NAVER_CLIENT_SECRET
+const googleClientId = process.env.GOOGLE_CLIENT_ID
+const googleClientSecret = process.env.GOOGLE_CLIENT_SECRET
+
 export const authOptions: NextAuthOptions = {
     // Configure one or more authentication providers
     providers: [
+        Kakao({
+            clientId: kakaoClientId as string,
+            clientSecret: kakaoClientSecret as string,
+
+        }),
+        Naver({
+            clientId: naverClientId as string,
+            clientSecret: naverClientSecret as string,
+        }),
+        Google({
+            clientId: googleClientId as string,
+            clientSecret: googleClientSecret as string,
+        }),
         CredentialsProvider({
             name: 'Credentials',
             credentials: {
@@ -36,7 +60,7 @@ export const authOptions: NextAuthOptions = {
             }
         })
     ],
-    // adapter: PrismaAdapter(prisma),
+    adapter: PrismaAdapter(prisma),
     callbacks: {
         // async redirect({ url, baseUrl }: {url: string,baseUrl: string}) {
         //     logger.debug("redirect callback", url, baseUrl)
