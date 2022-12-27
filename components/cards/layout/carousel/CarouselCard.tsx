@@ -103,7 +103,6 @@ export default function CarouselCard({ items }: Props) {
                 ></li>)
             })}
         </ul>
-        <div className={`${styles.sliderContainer}`}>
         <div className={`${styles.slider}`}
             ref={sliderRef}>
             {items && items.length > 0 && items.map((item, idx) => {
@@ -120,7 +119,6 @@ export default function CarouselCard({ items }: Props) {
                 )
             })}
 
-        </div>
         </div>
         {state.sideControl && <div className={`${styles.controls}`}>
             <button className={`${styles.prevControl}`} onClick={prevCallback}>{'<'}</button>
