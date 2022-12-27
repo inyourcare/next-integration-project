@@ -4,10 +4,22 @@
     height: 100vh;
     background-color: red;
     z-index: var(--carousel-container-z-index);
+    overflow: hidden;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.slider {
+    /* width: 100%; */
+    display: flex;
+    flex-wrap: nowrap;
+    /* overflow: scroll; */
 }
 .itemContainer {
-    width: 10%;
-
+    width: 500px;
+    flex: 0 0 auto; 
 }
 .item {
     /* width: 100px; */

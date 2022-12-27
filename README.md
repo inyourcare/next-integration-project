@@ -149,3 +149,9 @@ console.log("Account fields:", Prisma.dmmf.datamodel.models.find(model => model.
 git filter-branch --force --index-filter "git rm --cached --ignore-unmatch ./.env" --prune-empty --tag-name-filter cat -- --all
 git push origin --force --all
 ```
+
+## Carousel
+flex: 0 0 auto; 
+flex-grow -> 0 보다 클경우 남은 여백을 채운다
+flex-shrink -> 1 이상일 때 부모 컨테이너 크기가 아이템보다 작을경우 부모 컨테이너에 맞춰서 크기를 줄인다
+flex-basis -> 아이템의 기본 사이즈 컨텐츠의 크기에 따라 사이즈 결정(auto)
