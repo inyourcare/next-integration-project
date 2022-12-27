@@ -8,7 +8,7 @@ type DetailLayoutProps = {
     children: React.ReactNode,
 };
 
-export default function DetailLayout({ children }: DetailLayoutProps) {
+export default function CarauselLayout({ children }: DetailLayoutProps) {
     const initialState = {
         header: true,
         footer: true
