@@ -12,8 +12,12 @@ export default function CarouselCard({ items }: Props) {
         autoSlide: false,
         slideInterval: 3000,
         width: '100vw',
+        // width: '800px',
         sideControl: true,
-        dotControl: true
+        dotControl: true,
+        // itemWidth: '30%',
+        itemWidth: '500px',
+        itemMargin: '10px'
     })
     const sliderRef = useRef<HTMLDivElement>(null)
     useEffect(() => {
@@ -99,12 +103,14 @@ export default function CarouselCard({ items }: Props) {
                 ></li>)
             })}
         </ul>
+        <div className={`${styles.sliderContainer}`}>
         <div className={`${styles.slider}`}
             ref={sliderRef}>
             {items && items.length > 0 && items.map((item, idx) => {
                 return (
                     <div key={idx}
                         className={styles.itemContainer}
+                        style={{ margin: state.itemMargin, width: state.itemWidth }}
                     >
                         <div
                             className={styles.item}
@@ -114,6 +120,7 @@ export default function CarouselCard({ items }: Props) {
                 )
             })}
 
+        </div>
         </div>
         {state.sideControl && <div className={`${styles.controls}`}>
             <button className={`${styles.prevControl}`} onClick={prevCallback}>{'<'}</button>

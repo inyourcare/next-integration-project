@@ -3,7 +3,7 @@
     /* width: 1000px; */
     /* width: 100vw;
     height: 100vh; */
-    background-color: red;
+    /* background-color: red; */
     z-index: var(--carousel-container-z-index);
     overflow: hidden;
     display: flex;
@@ -42,6 +42,18 @@
     opacity: 1;
 }
 
+.sliderContainer {
+    /* width: 100%; */
+    /* display: flex;
+
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex: 0 0 auto; */
+    margin: 0
+
+    /* overflow: scroll; */
+}
 .slider {
     /* width: 100%; */
     display: flex;
@@ -49,8 +61,8 @@
     /* overflow: scroll; */
 }
 .itemContainer {
-    width: 500px;
-    flex: 0 0 auto; 
+    /* width: 500px; */
+    flex: 0 0 auto;
 }
 .item {
     /* width: 100px; */
