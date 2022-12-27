@@ -15,20 +15,18 @@ export default function CarouselCard({ items }: Props) {
         sideControl: true,
         dotControl: true
     })
-    const containerRef = useRef<HTMLDivElement>(null)
-    const sliderClassName = 'slider'
+    const sliderRef = useRef<HTMLDivElement>(null)
     useEffect(() => {
         if (Array.isArray(items)) {
             const len = items.length
-            const slider = containerRef.current?.querySelector(`.${sliderClassName}`)
             const transRatio = 100 / len
             if (items.length % 2 === 0) {
                 setState({ ...state, initialTransX: transRatio / 2 })
-                slider?.setAttribute('style', `transform: translate3d(${transRatio / 2}%, 0px, 0px); transition-duration: 350ms;`)
+                sliderRef.current?.setAttribute('style', `transform: translate3d(${transRatio / 2}%, 0px, 0px); transition-duration: 350ms;`)
                 // transferSlider(len,0)
             }
             else {
-                slider?.setAttribute('style', `transform: translate3d(${transRatio * Math.floor(0)}%, 0px, 0px); transition-duration: 350ms;`)
+                sliderRef.current?.setAttribute('style', `transform: translate3d(${transRatio * Math.floor(0)}%, 0px, 0px); transition-duration: 350ms;`)
             }
         }
     }, [items])
@@ -62,8 +60,7 @@ export default function CarouselCard({ items }: Props) {
         console.log('slide change', len, nextIdx)
         const transRatio = 100 / len
         const finalTransferX = state.initialTransX + (transRatio * (nextIdx))
-        const slider = containerRef.current?.querySelector(`.${sliderClassName}`)
-        slider?.setAttribute('style', `transform: translate3d(${finalTransferX}%, 0px, 0px); transition-duration: 350ms;`)
+        sliderRef.current?.setAttribute('style', `transform: translate3d(${finalTransferX}%, 0px, 0px); transition-duration: 350ms;`)
         setState({ ...state, carouselIdx: nextIdx })
     }, [state])
     const detectSelected = useCallback((len: number, idx: number) => {
@@ -90,7 +87,6 @@ export default function CarouselCard({ items }: Props) {
     return <div
         className={`${styles.container}`}
         style={{ width: state.width }}
-        ref={containerRef}
     >
         <ul className={`${styles.controlDots}`}>
             {state.dotControl && items && items.length > 0 && items.map((item, idx) => {
@@ -103,7 +99,8 @@ export default function CarouselCard({ items }: Props) {
                 ></li>)
             })}
         </ul>
-        <div className={`${sliderClassName} ${styles.slider}`}>
+        <div className={`${styles.slider}`}
+            ref={sliderRef}>
             {items && items.length > 0 && items.map((item, idx) => {
                 return (
                     <div key={idx}
