@@ -1,3 +1,4 @@
+import CarouselCard from "@components/cards/layout/carousel/CarouselCard";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -6,9 +7,10 @@ import Header from "./header";
 
 type DetailLayoutProps = {
     children: React.ReactNode,
+    items: string[]
 };
 
-export default function CarauselLayout({ children }: DetailLayoutProps) {
+export default function CarauselLayout({ children, items }: DetailLayoutProps) {
     const initialState = {
         header: true,
         footer: true
@@ -21,6 +23,7 @@ export default function CarauselLayout({ children }: DetailLayoutProps) {
                 <title></title>
             </Head>
             <Header enable={state.header} toggleFooter={toggleFooter} />
+            <CarouselCard items={items} />
             {children}
             <Footer enable={state.footer} />
         </>
