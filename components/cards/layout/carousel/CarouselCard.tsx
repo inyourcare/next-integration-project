@@ -6,13 +6,14 @@ type Props = {
 };
 export default function CarouselCard({ items }: Props) {
     const [state, setState] = useState({
-        // maxXOffset: 0,
-        // minXOffset: 0,
         carouselIdx: 0,
         //짝수개 이미지인 경우
         initialTransX: 0,
-        autoSlide: true,
-        slideInterval: 3000
+        autoSlide: false,
+        slideInterval: 3000,
+        width: '100vw',
+        sideControl: true,
+        dotControl: true
     })
     const containerRef = useRef<HTMLDivElement>(null)
     const sliderClassName = 'slider'
@@ -67,12 +68,41 @@ export default function CarouselCard({ items }: Props) {
     }, [state])
     const detectSelected = useCallback((len: number, idx: number) => {
         return len % 2 === 0 ?
-            (len - 1 - idx) === state.carouselIdx + Math.floor(len / 2) - 1 ? 'selected' : ''
-            : (len - 1 - idx) === state.carouselIdx + Math.floor(len / 2) ? 'selected' : ''
+            (len - 1 - idx) === state.carouselIdx + Math.floor(len / 2) - 1 ? styles.controlDotSelected : ''
+            : (len - 1 - idx) === state.carouselIdx + Math.floor(len / 2) ? styles.controlDotSelected : ''
     }, [state])
 
+    const prevCallback = useCallback(() => {
+        if (Array.isArray(items)) {
+            const len = items.length
+            const nextIdx = Math.min(state.carouselIdx + 1, getMaxIdx(len))
+            transferSlider(len, nextIdx)
+        }
 
-    return <div className={`${styles.container}`} ref={containerRef}>
+    }, [state, items])
+    const nextCallback = useCallback(() => {
+        if (Array.isArray(items)) {
+            const len = items.length
+            const nextIdx = Math.max(state.carouselIdx - 1, getMinIdx(len))
+            transferSlider(len, nextIdx)
+        }
+    }, [state, items])
+    return <div
+        className={`${styles.container}`}
+        style={{ width: state.width }}
+        ref={containerRef}
+    >
+        <ul className={`${styles.controlDots}`}>
+            {state.dotControl && items && items.length > 0 && items.map((item, idx) => {
+                return (<li
+                    key={idx}
+                    className={
+                        `${styles.controlDot} ${detectSelected(items.length, idx)}`
+                    }
+                    onClick={() => { transferSlider(items.length, (items.length - 1 - idx) - Math.floor(items.length / 2)) }}
+                ></li>)
+            })}
+        </ul>
         <div className={`${sliderClassName} ${styles.slider}`}>
             {items && items.length > 0 && items.map((item, idx) => {
                 return (
@@ -88,5 +118,9 @@ export default function CarouselCard({ items }: Props) {
             })}
 
         </div>
+        {state.sideControl && <div className={`${styles.controls}`}>
+            <button className={`${styles.prevControl}`} onClick={prevCallback}>{'<'}</button>
+            <button className={`${styles.nextControl}`} onClick={nextCallback}>{'>'}</button>
+        </div>}
     </div>
 }

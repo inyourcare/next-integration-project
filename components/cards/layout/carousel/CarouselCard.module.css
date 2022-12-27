@@ -1,7 +1,8 @@
 .container {
     position: absolute;
-    width: 100vw;
-    height: 100vh;
+    /* width: 1000px; */
+    /* width: 100vw;
+    height: 100vh; */
     background-color: red;
     z-index: var(--carousel-container-z-index);
     overflow: hidden;
@@ -11,6 +12,36 @@
     justify-content: center;
     flex-wrap: wrap;
 }
+
+.controlDots {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    list-style: none;
+    margin: 10px auto;
+    z-index: 1;
+    bottom: 0;
+}
+.controlDot {
+    width: 8px;
+    height: 8px;
+    opacity: .3;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 8px;
+    transition: all .25s ease-in;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 90%);
+}
+.controlDot:hover {
+    opacity: 1;
+}
+
+.controlDotSelected {
+    opacity: 1;
+}
+
 .slider {
     /* width: 100%; */
     display: flex;
@@ -28,4 +59,38 @@
     /* background-size: contain; */
     /* background-size: cover; */
     background-size: 100% 100%;
+}
+
+.controls {
+    position:absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+}
+.prevControl {
+    float: left;
+    color: #fff;
+    height: 100%;
+    opacity: .4;
+    transition: all .25s ease-in;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.prevControl:hover {
+    background-color: #fafafa;
+}
+.nextControl {
+    float: right;
+    color: #fff;
+    height: 100%;
+    opacity: .4;
+    transition: all .25s ease-in;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.nextControl:hover {
+    background-color: #fafafa;
 }
