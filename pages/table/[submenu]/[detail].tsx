@@ -2,7 +2,6 @@ import ReactTableLayout from "@components/layouts/table/layout";
 import Link from "@components/wrapper/link";
 import { Querys } from "@core/definitions";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { useMemo } from "react";
 import { dehydrate, QueryClient, useQuery } from 'react-query';
 
 export default function Table({ }: InferGetServerSidePropsType<typeof getServerSideProps>) {
@@ -11,7 +10,7 @@ export default function Table({ }: InferGetServerSidePropsType<typeof getServerS
         () => Querys.getUserList.query())
     const tableData = { ...data }
     const columns = Querys.getUserList.columns
-    
+
     return <ReactTableLayout columns={columns} data={tableData.users}>
         <br />
         <div>table<Link href={'/'}>home</Link></div>
@@ -27,9 +26,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (context) => 
     const { req, res, locale } = context;
     const queryClient = new QueryClient();
     await Promise.all([queryClient.prefetchQuery(
-        // "userList",
         Querys.getUserList.key,
-        // () => getUsers()
         () => Querys.getUserList.query()
     )])
     return {
