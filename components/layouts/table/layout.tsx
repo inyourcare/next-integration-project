@@ -8,7 +8,7 @@ import Header from "./header";
 type Props = {
     children: React.ReactNode,
     columns: Column<{}>[];
-    data: {}[];
+    data?: {}[];
 };
 
 export default function ReactTableLayout({ children, columns, data }: Props) {
@@ -24,7 +24,8 @@ export default function ReactTableLayout({ children, columns, data }: Props) {
                 <title></title>
             </Head>
             <Header enable={state.header} toggleFooter={toggleFooter} />
-            <ReactTableCard columns={columns} data={data} />
+            <div style={{ height: '140px' }}></div>
+            {data && <ReactTableCard columns={columns} data={data} />}
             {children}
             <Footer enable={state.footer} />
         </>
