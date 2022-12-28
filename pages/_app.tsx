@@ -7,8 +7,10 @@ import { useState } from 'react';
 export default function App({ Component, pageProps: { session, ...pageProps }, }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
   return <QueryClientProvider client={queryClient}>
-    <Hydrate state={pageProps.dehydratedState}><SessionProvider session={session}>
-      <Component {...pageProps} />
-    </SessionProvider></Hydrate>
+    <Hydrate state={pageProps.dehydratedState}>
+      <SessionProvider session={session}>
+        <Component {...pageProps} />
+      </SessionProvider>
+    </Hydrate>
   </QueryClientProvider>
 }
