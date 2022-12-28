@@ -157,3 +157,23 @@ flex-shrink -> 1 이상일 때 부모 컨테이너 크기가 아이템보다 작
 flex-basis -> 아이템의 기본 사이즈 컨텐츠의 크기에 따라 사이즈 결정(auto)
 
 이미지/캐러슬/아래 이미지 수 만큼 돌리도록 만들었다.
+
+
+## Hydrate
+Hydrate는 Server Side 단에서 렌더링 된 정적 페이지와 번들링된 JS파일을 클라이언트에게 보낸 뒤, 클라이언트 단에서 HTML 코드와 React인 JS코드를 서로 매칭 시키는 과정을 말한다.
+
+React Query는 서버에서 데이터를 prefetch해와 queryClient에 넘겨주는 것에 있어 두 가지 방식을 지원한다.
+
+- 직접 데이터를 prefetch해와서 initialData로 넘겨주는 것
+- 서버에서 query를 prefetch하고, 그 cache를 dehydrate해서 클라이언트에 그것을 rehydrate하는 것
+
+```
+  <QueryClientProvider client={queryClient}>
+    <Hydrate state={pageProps.dehydratedState}>
+      <SessionProvider session={session}>
+        <Component {...pageProps} />
+      </SessionProvider>
+    </Hydrate>
+  </QueryClientProvider>
+```
+위와 같이 hydrate 하는 것이 두번째 방법이고, initialData fetching 을 따로 할 필요가 없어 이득이다.
