@@ -1,4 +1,4 @@
-import PrintDialog from "@components/dialogs/print"
+import PrintDialog from "@components/cards/dialogs/PrintDialogCard"
 import Link from "@components/wrapper/link"
 import { logger } from "@core/logger"
 import { useRouter } from "next/router"

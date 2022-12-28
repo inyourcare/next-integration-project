@@ -1,4 +1,4 @@
-import CarouselCard from "@components/cards/layout/carousel/CarouselCard";
+import CarouselCard from "@components/cards/carousel/CarouselCard";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState } from "react";

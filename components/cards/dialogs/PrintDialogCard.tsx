@@ -5,7 +5,7 @@ import ReactToPrint from 'react-to-print';
 import jsPDF from "jspdf";
 import html2canvas from 'html2canvas'
 
-export default function PrintDialog(
+export default function PrintDialogCard(
     { open, setOpen }: { open: boolean, setOpen: Dispatch<SetStateAction<boolean>> }
 ) {
     const tableRef = useRef<HTMLTableElement>(null)
