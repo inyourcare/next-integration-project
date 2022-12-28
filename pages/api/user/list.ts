@@ -37,7 +37,7 @@ export default async function handle(
             emailVerified: true,
             // password:true,
             image: true,
-            role: true,
+            // role: true,
             createdAt: true,
             updatedAt: true,
             roles: true

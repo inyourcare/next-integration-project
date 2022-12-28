@@ -7,18 +7,8 @@
       },
       {
         "locale": "en-US",
-        "name": "first",
-        "key": "first"
-      },
-      {
-        "locale": "en-US",
-        "name": "second",
-        "key": "second"
-      },
-      {
-        "locale": "en-US",
-        "name": "third",
-        "key": "third"
+        "name": "table",
+        "key": "table"
       },
 
       {
@@ -28,19 +18,10 @@
       },
       {
         "locale": "ko-KR",
-        "name": "first",
-        "key": "first"
-      },
-      {
-        "locale": "ko-KR",
-        "name": "second",
-        "key": "second"
-      },
-      {
-        "locale": "ko-KR",
-        "name": "third",
-        "key": "third"
+        "name": "table",
+        "key": "table"
       }
+
     ],
     "submenus": [
       {
@@ -51,39 +32,9 @@
       },
       {
         "locale": "en-US",
-        "origin": "first",
+        "origin": "table",
         "name": "first",
         "key": "first"
-      },
-      {
-        "locale": "en-US",
-        "origin": "first",
-        "name": "second",
-        "key": "second"
-      },
-      {
-        "locale": "en-US",
-        "origin": "first",
-        "name": "third",
-        "key": "third"
-      },
-      {
-        "locale": "en-US",
-        "origin": "third",
-        "name": "first",
-        "key": "first"
-      },
-      {
-        "locale": "en-US",
-        "origin": "third",
-        "name": "second",
-        "key": "second"
-      },
-      {
-        "locale": "en-US",
-        "origin": "third",
-        "name": "third",
-        "key": "third"
       },
 
       {
@@ -94,39 +45,9 @@
       },
       {
         "locale": "ko-KR",
-        "origin": "first",
+        "origin": "table",
         "name": "first",
         "key": "first"
-      },
-      {
-        "locale": "ko-KR",
-        "origin": "first",
-        "name": "second",
-        "key": "second"
-      },
-      {
-        "locale": "ko-KR",
-        "origin": "first",
-        "name": "third",
-        "key": "third"
-      },
-      {
-        "locale": "ko-KR",
-        "origin": "third",
-        "name": "first",
-        "key": "first"
-      },
-      {
-        "locale": "ko-KR",
-        "origin": "third",
-        "name": "second",
-        "key": "second"
-      },
-      {
-        "locale": "ko-KR",
-        "origin": "third",
-        "name": "third",
-        "key": "third"
       }
     ]
   }
