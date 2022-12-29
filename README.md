@@ -177,3 +177,31 @@ React Query는 서버에서 데이터를 prefetch해와 queryClient에 넘겨주
   </QueryClientProvider>
 ```
 위와 같이 hydrate 하는 것이 두번째 방법이고, initialData fetching 을 따로 할 필요가 없어 이득이다.
+
+## .env
+```
+# Environment variables declared in this file are automatically made available to Prisma.
+# See the documentation for more detail: https://pris.ly/d/prisma-schema#accessing-environment-variables-from-the-schema
+
+# Prisma supports the native connection string format for PostgreSQL, MySQL, SQLite, SQL Server, MongoDB and CockroachDB.
+# See the documentation for all the connection string options: https://pris.ly/d/connection-strings
+
+DATABASE_URL="file:./dev.db"
+```
+
+## .env.development.local
+```
+HOST=http://localhost/api/og
+
+NEXT_PUBLIC_NEXTAUTH=enable
+NEXTAUTH_URL=http://localhost:3000/api/auth
+NEXTAPI_BASE_URL=http://localhost:3000/api
+NEXTAUTH_SECRET=any-secret-word
+
+KAKAO_CLIENT_ID=$ID
+KAKAO_CLIENT_SECRET=$ID
+NAVER_CLIENT_ID=$ID
+NAVER_CLIENT_SECRET=$ID
+GOOGLE_CLIENT_ID=$ID
+GOOGLE_CLIENT_SECRET=$ID
+```
