@@ -205,3 +205,10 @@ NAVER_CLIENT_SECRET=$ID
 GOOGLE_CLIENT_ID=$ID
 GOOGLE_CLIENT_SECRET=$ID
 ```
+
+
+## Graphql 을 적용해보자
+[참고](https://www.apollographql.com/blog/apollo-client/next-js/next-js-getting-started/)
+https://studio.apollographql.com/sandbox/explorer 에서 로그인 후 Graph 생성하여 확인
+
+- Root path 에 apollo.ts (Client 생성) 만들어주면 자동으로 등록 되는 듯

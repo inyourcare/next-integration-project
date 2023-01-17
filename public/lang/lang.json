@@ -10,6 +10,11 @@
         "name": "table",
         "key": "table"
       },
+      {
+        "locale": "en-US",
+        "name": "graphQl",
+        "key": "graphQl"
+      },
 
       {
         "locale": "ko-KR",
@@ -20,6 +25,11 @@
         "locale": "ko-KR",
         "name": "table",
         "key": "table"
+      },
+      {
+        "locale": "ko-KR",
+        "name": "graphQl",
+        "key": "graphQl"
       }
 
     ],
@@ -36,6 +46,12 @@
         "name": "first",
         "key": "first"
       },
+      {
+        "locale": "en-US",
+        "origin": "graphQl",
+        "name": "first",
+        "key": "first"
+      },
 
       {
         "locale": "ko-KR",
@@ -46,6 +62,12 @@
       {
         "locale": "ko-KR",
         "origin": "table",
+        "name": "first",
+        "key": "first"
+      },
+      {
+        "locale": "ko-KR",
+        "origin": "graphQl",
         "name": "first",
         "key": "first"
       }
