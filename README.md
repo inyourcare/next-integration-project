@@ -212,3 +212,6 @@ GOOGLE_CLIENT_SECRET=$ID
 https://studio.apollographql.com/sandbox/explorer 에서 로그인 후 Graph 생성하여 확인
 
 - Root path 에 apollo.ts (Client 생성) 만들어주면 자동으로 등록 되는 듯
+
+### Graphql 이 내 nextjs 의 api 를 사용 가능하게 하려면 어떻게 해야할까
+[참고](https://www.smashingmagazine.com/2020/10/graphql-server-next-javascript-api-routes/)
