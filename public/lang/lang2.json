@@ -1,0 +1,68 @@
+{
+  "ko-KR": {
+    "menus": [
+      {
+        "name": "carousel",
+        "key": "carousel"
+      },
+      {
+        "name": "table",
+        "key": "table"
+      },
+      {
+        "name": "graphQl",
+        "key": "graphQl"
+      }
+    ],
+    "submenus": [
+      {
+        "origin": "carousel",
+        "name": "first",
+        "key": "first"
+      },
+      {
+        "origin": "table",
+        "name": "first",
+        "key": "first"
+      },
+      {
+        "origin": "graphQl",
+        "name": "first",
+        "key": "first"
+      }
+    ]
+  },
+  "en-US": {
+    "menus": [
+      {
+        "name": "carousel-en",
+        "key": "carousel"
+      },
+      {
+        "name": "table-en",
+        "key": "table"
+      },
+      {
+        "name": "graphQl-en",
+        "key": "graphQl"
+      }
+    ],
+    "submenus": [
+      {
+        "origin": "carousel",
+        "name": "first-en",
+        "key": "first"
+      },
+      {
+        "origin": "table",
+        "name": "first-en",
+        "key": "first"
+      },
+      {
+        "origin": "graphQl",
+        "name": "first-en",
+        "key": "first"
+      }
+    ]
+  }
+}

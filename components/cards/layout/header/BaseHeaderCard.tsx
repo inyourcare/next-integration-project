@@ -4,7 +4,7 @@ import { logger } from "@core/logger"
 import { useRouter } from "next/router"
 import { Dispatch, MouseEvent, SetStateAction, useEffect, useState } from "react"
 import styles from './Base.module.css'
-import lang from 'public/lang/lang.json';
+import lang from 'public/lang/lang2.json';
 import AuthBtn from "@components/auth/AuthBtn"
 import { useAsPAthChanged } from "@core/hooks/useAsPathChanged"
 
@@ -13,9 +13,24 @@ interface BaseHeaderProps {
 }
 export default function BaseHeaderCard({ toggleFooter }: BaseHeaderProps) {
 
-    const { locale, locales, asPath, push } = useRouter();
-    const initialMenus = lang.menus.filter(menu => menu.locale === locale)
-    const initialSubMenus = lang.submenus.filter(submenu => submenu.locale === locale)
+    const { locale='ko-KR', locales, asPath, push } = useRouter();
+    
+    var initialMenus = lang["ko-KR"].menus
+    var initialSubMenus = lang["ko-KR"].submenus
+    switch (locale) {
+        case 'ko-KR':
+            initialMenus = lang[locale].menus
+            initialSubMenus = lang[locale].submenus
+            break;
+        case 'en-US':
+            initialMenus = lang[locale].menus
+            initialSubMenus = lang[locale].submenus
+            break;
+    
+        default:
+            break;
+    }
+
     const initialState = {
         menuListOpen: false,
 

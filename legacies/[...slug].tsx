@@ -2,13 +2,27 @@ import Link from "@components/wrapper/link"
 import { logger } from "@core/logger"
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next"
 import { useRouter } from "next/router"
-import lang from 'public/lang/lang.json';
+import lang from 'public/lang/lang2.json';
 import { useState } from "react";
 
 export default function Slug() {
-    const { locale, locales, asPath, push, query } = useRouter();
-    const initialMenus = lang.menus.filter(menu => menu.locale === locale)
-    const initialSubMenus = lang.submenus.filter(submenu => submenu.locale === locale)
+    const { locale='ko-KR', locales, asPath, push, query } = useRouter();
+    
+    var initialMenus = lang["ko-KR"].menus
+    var initialSubMenus = lang["ko-KR"].submenus
+    switch (locale) {
+        case 'ko-KR':
+            initialMenus = lang[locale].menus
+            initialSubMenus = lang[locale].submenus
+            break;
+        case 'en-US':
+            initialMenus = lang[locale].menus
+            initialSubMenus = lang[locale].submenus
+            break;
+    
+        default:
+            break;
+    }
     const { slug } = query
     const initialState = {
 
