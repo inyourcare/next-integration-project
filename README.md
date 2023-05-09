@@ -215,3 +215,31 @@ https://studio.apollographql.com/sandbox/explorer 에서 로그인 후 Graph 생
 
 ### Graphql 이 내 nextjs 의 api 를 사용 가능하게 하려면 어떻게 해야할까
 [참고](https://www.smashingmagazine.com/2020/10/graphql-server-next-javascript-api-routes/)
+
+
+### 아래는 대창경 프로젝트 Readme 파일 내용
+```
+시작하며
+npx create-next-app@latest --typescript
+실행 명령어 npm run dev
+ul 이 li height 없으면
+overflow hidden
+
+ul 두줄 할 때
+ul -> block li -> float: left , width: 50%
+
+width 와 height 비율 맞춰서 background 하는 법
+width + padding-top
+
+도커 순서
+Docker file example(official document) (output: 'standalone',)
+docker build -t [image name] .    (Image name)
+docker run -p 3000:3000 [image name] (외부포트:도커내부포트)
+
+-> 맥북 m1 칩에서 할경우 amd 서버에서 에러발생함...
+docker buildx build --platform=linux/amd64 -t [image name]:[version] . 
+(default: docker buildx build --platform=linux/arm64 -t [image name]:[version] .)
+
+-> 이미지 저장
+docker save -o [save file name].tar [image name]
+```
